@@ -1,3 +1,9 @@
+# Sealos Lifecycle Development Guide
+
+> **📖 For a comprehensive development environment setup guide covering the entire Sealos project, see the [root DEVELOPGUIDE.md](../DEVELOPGUIDE.md) or [中文版](../DEVELOPGUIDE_zh.md).**
+
+This guide focuses specifically on the lifecycle component (sealos CLI and related binaries).
+
 # Environment settings
 
 sealos only support Linux now, you need a Linux server to test it.

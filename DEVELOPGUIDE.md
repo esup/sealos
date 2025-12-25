@@ -2,6 +2,33 @@
 
 This guide will help you set up a complete local development environment for the Sealos project.
 
+## Quick Start
+
+For those who want to get started quickly:
+
+```bash
+# 1. Install system dependencies (Ubuntu/Debian)
+sudo apt-get update && sudo apt-get install -y pkg-config libdevmapper-dev libbtrfs-dev libgpgme-dev build-essential make
+
+# 2. Clone repository
+git clone https://github.com/labring/sealos.git && cd sealos
+
+# 3. Build sealos CLI
+cd lifecycle && make build BINS=sealos
+
+# 4. Verify build
+./bin/linux_amd64/sealos version
+```
+
+## Table of Contents
+
+- [System Requirements](#system-requirements)
+- [Clone the Repository](#clone-the-repository)
+- [Building the Project](#building-the-project)
+- [Development Workflow](#development-workflow)
+- [Troubleshooting](#troubleshooting)
+- [Contributing Guidelines](#contributing-guidelines)
+
 ## System Requirements
 
 ### Operating System
@@ -157,6 +184,27 @@ pnpm dev-terminal      # Terminal
   ```
 
 ## Development Workflow
+
+### Verify Your Development Environment
+
+Before starting development, verify your environment is set up correctly:
+
+```bash
+# Verify Go installation and version
+go version  # Should be 1.23 or higher
+
+# Verify required system packages
+pkg-config --exists devmapper && echo "✓ devmapper found" || echo "✗ devmapper missing"
+pkg-config --exists btrfs && echo "✓ btrfs found" || echo "✗ btrfs missing"  
+pkg-config --exists gpgme && echo "✓ gpgme found" || echo "✗ gpgme missing"
+
+# Verify build tools
+make --version
+gcc --version
+
+# Verify Node.js (for frontend development)
+node --version  # Should be 20.4.0 or higher
+```
 
 ### Code Formatting
 

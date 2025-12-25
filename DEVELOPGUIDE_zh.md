@@ -2,6 +2,33 @@
 
 本指南将帮助您在本地搭建 Sealos 项目的完整开发环境。
 
+## 快速开始
+
+如果您想快速开始开发：
+
+```bash
+# 1. 安装系统依赖（Ubuntu/Debian）
+sudo apt-get update && sudo apt-get install -y pkg-config libdevmapper-dev libbtrfs-dev libgpgme-dev build-essential make
+
+# 2. 克隆仓库
+git clone https://github.com/labring/sealos.git && cd sealos
+
+# 3. 构建 sealos CLI
+cd lifecycle && make build BINS=sealos
+
+# 4. 验证构建
+./bin/linux_amd64/sealos version
+```
+
+## 目录
+
+- [系统要求](#系统要求)
+- [克隆仓库](#克隆仓库)
+- [构建项目](#构建项目)
+- [开发工作流](#开发工作流)
+- [常见问题](#常见问题)
+- [贡献指南](#贡献指南)
+
 ## 系统要求
 
 ### 操作系统
@@ -157,6 +184,27 @@ pnpm dev-terminal      # 终端
   ```
 
 ## 开发工作流
+
+### 验证开发环境
+
+在开始开发之前，验证您的环境是否正确设置：
+
+```bash
+# 验证 Go 安装和版本
+go version  # 应该是 1.23 或更高版本
+
+# 验证所需的系统包
+pkg-config --exists devmapper && echo "✓ devmapper 已找到" || echo "✗ devmapper 缺失"
+pkg-config --exists btrfs && echo "✓ btrfs 已找到" || echo "✗ btrfs 缺失"  
+pkg-config --exists gpgme && echo "✓ gpgme 已找到" || echo "✗ gpgme 缺失"
+
+# 验证构建工具
+make --version
+gcc --version
+
+# 验证 Node.js（用于前端开发）
+node --version  # 应该是 20.4.0 或更高版本
+```
 
 ### 代码格式化
 
